@@ -1,0 +1,8 @@
+<h2>Результаты поиска</h2>
+<% if @results.empty? %>
+	Ничего не найдено!
+<% else %>
+  <% @results.each do |result| %>
+    <%= link_to result.name, result %><br/>  
+  <% end %>
+<% end %>  

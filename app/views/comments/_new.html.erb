@@ -1,0 +1,31 @@
+<% if reply %>
+  <% form_class = "new_comment, reply_comment" %>
+	<% button_caption = "Ответить"  %>
+  <% form_id = @parent_id %>
+<% else %>
+  <% form_class = "new_comment" %>
+	<% button_caption = "Добавить коментарий" %>
+  <% form_id = commentable.id.to_s %>
+<% end %>
+<%= form_for([commentable, comment], :remote => true, :html => {:multipart => true, :id => "new_comment-"+form_id, :class => form_class} ) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :parent_id, :value => params[:parent_id] %>
+  <div class="field">
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+
+    <%= f.submit :value => button_caption, :class => "small button" %>
+	<a class="close_comment_form-<%= form_id %>" style="float: right;">&#215;</a>
+  </div>
+
+<% end %>

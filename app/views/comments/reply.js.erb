@@ -1,0 +1,8 @@
+var cdiv = '#comment-<%= @parent_id %>';
+if ($(cdiv).find('form').is("[id^='new_comment-']")) {
+	$(cdiv).find('form').remove();
+} else {
+	$(cdiv).append('<%= j render(:partial => "comments/new", :content => "1111", :parent_id => @parent_id, :locals => {:commentable => @commentable, :comment => Comment.new, :reply => true}) %>');
+
+}
+	console.log ("<%= @parent_id %>");

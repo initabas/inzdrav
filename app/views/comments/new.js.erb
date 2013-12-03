@@ -1,0 +1,1 @@
+$('#new_comment_link-'+<%= @commentable.id.to_s %>).hide().after('<%= j render(:partial => "comments/new", :locals => {:commentable => @commentable, :comment => Comment.new, :reply => false}) %>');

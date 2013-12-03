@@ -1,0 +1,57 @@
+<%= render "layouts/header" %>
+<div class="row">
+<h1>Препараты</h1>
+	<div class="small-3 columns">
+	  <div id="facets">
+	    <span class="header">Форма выпуска</span>
+	      <% existing_frm_facets = [] %>
+	      <% if params[:forma_vypuska_id].present? %>
+	        <% existing_frm_facets = params[:forma_vypuska_id] %>
+	      <% end %>
+	      <% existing_ing_facets = [] %>
+	      <% if params[:ingredient_id].present? %>
+	        <% existing_ing_facets = params[:ingredient_id] %>
+	      <% end %>
+	    <ul>
+	      <% for row in @search.facet(:forma_vypuska_ids).rows %>
+	        <% facet_add = existing_frm_facets + [row.value] %>              
+	        <% forma_vypuskas = FormaVypuska.find_by_id(row.value) %>
+	        <% facets_url = url_for(:search => params[:q], :forma_vypuska_id => facet_add, :ingredient_id => existing_ing_facets) %>
+	        <% if params[:forma_vypuska_id].blank? %>
+	          <li class="filter-link"><%= link_to forma_vypuskas.name, facets_url %></li>
+	        <% elsif params[:forma_vypuska_id].include? row.value.to_s %>   
+	          <% facet_rm = existing_frm_facets - [row.value.to_s] %>
+	          <li class="filter-link"><strong><%= forma_vypuskas.name %></strong> <%= link_to "X", url_for(:search => params[:q], :forma_vypuska_id => facet_rm, :ingredient_id => existing_ing_facets) %></li>
+	        <% else %>
+	          <li class="filter-link"><%= link_to forma_vypuskas.name, facets_url %></li>               
+	        <% end %>
+	      <% end %>
+	    </ul>
+	     <span class="header">Состав</span>
+
+	    <ul>
+	      <% for row in @search.facet(:ingredient_ids).rows %>
+	        <% facet_add = existing_ing_facets + [row.value] %>              
+	        <% ingredients = Ingredient.find_by_id(row.value) %>
+	        <% facets_url = url_for(:search => params[:q], :ingredient_id => facet_add, :forma_vypuska_id => existing_frm_facets) %>
+	        <% if params[:ingredient_id].blank? %>
+	          <li class="filter-link"><%= link_to ingredients.name, facets_url%></li>
+	        <% elsif params[:ingredient_id].include? row.value.to_s %>   
+	          <% facet_rm = existing_ing_facets - [row.value.to_s] %>
+	          <li class="filter-link"><strong><%= ingredients.name %></strong> <%= link_to "X", url_for(:search => params[:q], :ingredient_id => facet_rm, :forma_vypuska_id => existing_frm_facets) %></li>
+	        <% else %>
+	          <li class="filter-link"><%= link_to ingredients.name, facets_url %></li>               
+	        <% end %>
+	      <% end %>
+	    </ul>
+
+	  </div>   
+	</div>
+  <div class="small-9 columns">
+    <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <%- end -%>  
+    <%= yield %>
+  </div>
+</div>
+<%= render "layouts/footer" %>

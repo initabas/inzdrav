@@ -1,0 +1,5 @@
+var cdiv = '#comment-<%= @parent_id %>';
+if ($(cdiv).find('form').is("[id^='new_comment-']")) {
+	$(cdiv).find('form').remove();
+};
+console.log (cdiv);

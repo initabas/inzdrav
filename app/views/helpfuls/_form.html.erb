@@ -1,0 +1,21 @@
+<%= form_for([@medication, @helpful]) do |f| %>
+  <% if @helpful.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@helpful.errors.count, "error") %> prohibited this helpful from being saved:</h2>
+
+      <ul>
+      <% @helpful.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :review %><br>
+    <%= f.text_area :review %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

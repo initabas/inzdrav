@@ -1,0 +1,27 @@
+<h1>Listing forma_vypuskas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forma_vypuskas.each do |forma_vypuska| %>
+      <tr>
+        <td><%= forma_vypuska.name %></td>
+        <td><%= link_to 'Show', forma_vypuska %></td>
+        <td><%= link_to 'Edit', edit_forma_vypuska_path(forma_vypuska) %></td>
+        <td><%= link_to 'Destroy', forma_vypuska, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Forma vypuska', new_forma_vypuska_path %>

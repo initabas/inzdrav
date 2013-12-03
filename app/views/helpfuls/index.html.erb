@@ -1,0 +1,29 @@
+<h1>Listing helpfuls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Review</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @helpfuls.each do |helpful| %>
+      <tr>
+        <td><%= helpful.user_id %></td>
+        <td><%= helpful.review %></td>
+        <td><%= link_to 'Show', helpful %></td>
+        <td><%= link_to 'Edit', edit_helpful_path(helpful) %></td>
+        <td><%= link_to 'Destroy', helpful, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Helpful', new_helpful_path %>

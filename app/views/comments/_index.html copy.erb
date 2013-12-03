@@ -1,0 +1,16 @@
+<% helpful.comments.arrange(:order => :content).map do |comment, sub_comments| %>
+	<% nested_comment = "111" %>
+	<% nested_comment = "nested_comment" unless comment.has_children? %>
+	
+	<div id="comment-<%= comment.id %>" class="<%= nested_comment %>">
+	  <%= content_tag( :span, comment.user.name, :class => "comment_user_name") %>
+	  <span class="time_ago"> &#8226; <%= time_ago_in_words(comment.created_at) %></span>
+	  <div id="comment_content-<%= comment.id %>">
+			<%= comment.content %>
+			<div id="comment_edit_buttons">
+				<%= link_to 'Ответить', new_polymorphic_path([helpful, Comment.new], :parent_id => comment.id), remote: true %>
+				<%= edit_delete_links(comment, comment.user, helpful) %>
+			</div>	
+		</div>
+  </div>
+<% end.join.html_safe %>

@@ -1,0 +1,11 @@
+	
+	$('#edit_comment-<%= @comment.id.to_s %>').fadeOut(300);
+  $('#comment_content-<%= @comment.id.to_s %>').html('<div id="loadingDiv"></div>').fadeIn();
+	$(document).ajaxStart( function() {
+	})
+	.ajaxStop( function(){
+		$('#loadingDiv').fadeOut();
+	  $('#comment-<%= @comment.id.to_s %>').load(location.href+" [id='comment-<%= @comment.id.to_s %>']>*", "");
+	  $(this).unbind("ajaxStop");
+	  $(this).unbind("ajaxStart");
+	});

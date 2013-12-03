@@ -1,0 +1,19 @@
+<%= @user.name %>
+	<div class="row">
+	  	<div id="helpful" class="small-6 columns">
+			<h5>Помогло</h5>
+			<div >
+			  <% @user.helpfuls.each do |helpful| %>
+		  		<span class="header"><%= link_to helpful.helpfulness.name, helpful.helpfulness %></span>
+				<div class="panel">
+				  <% if helpful.review.length > 80 %>
+				    <%= truncate(helpful.review, length: 80) %> </br>
+				    <%= link_to_function 'развернуть', "$(this).parent().html('#{escape_javascript helpful.review}')" %>
+				  <% else %>
+				    <%= helpful.review %>
+				  <% end %>
+			  </div>
+			  <% end %>
+		    </div>
+        </div>
+    </div>

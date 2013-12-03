@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @helpful.user_id %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  <%= @helpful.review %>
+</p>
+
+<%= link_to 'Edit', edit_helpful_path(@helpful) %> |
+<%= link_to 'Back', helpfuls_path %>
