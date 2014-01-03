@@ -1,0 +1,14 @@
+<div class="btn-group">
+  <% flags =      [:helpful,              :nonhelpful,             :callendar] %>
+  <% glyphicons = ["glyphicon-thumbs-up", "glyphicon-thumbs-down", "glyphicon-calendar"] %>
+  <% if user_signed_in? %>
+    <% links = ["#helpfuls-"+medication.id.to_s, "#nonhelpfuls-"+medication.id.to_s, "#callendar-"+medication.id.to_s] %>
+  <% else %>
+    <% links = ["#sign-in", "#sign-in", "#sign-in"] %>
+  <% end %>
+
+  <% flags.zip(glyphicons, links).each do |flag, glyph, link| %>
+    <button type="button" class="btn <%= murkup_flagged(medication, current_user, flag) %>" data-toggle = "modal" data-target = "<%= link.to_s %>"><%= content_tag :a, raw("<span class='glyphicon #{glyph.to_s}'></span>"), :href => show_modal_path %>
+    </button>
+  <% end %>
+</div>

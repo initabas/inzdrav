@@ -1,0 +1,32 @@
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-brand {
+	padding-bottom: 0;
+}
+
+body {
+  padding-top: 60px;
+}
+@media (max-width: 980px) {
+  body {
+    padding-top: 0;
+  }
+}
+
+/* Override Bootstrap 3 font locations */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover { 
+  outline: 0;
+}
+
+.centered{
+    float: none;
+    margin: 0 auto;
+}
