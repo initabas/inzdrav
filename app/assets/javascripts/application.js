@@ -12,17 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
 //= require turbolinks
 //= require comments
+//= require bootstrap
 //= require_tree .
-  $(document).foundation();
 $(function() {
 	var clicked = false;
   var id = null;
   var isFormValid = null;
 			
-
+	$('#medication-tabs a').click(function (e) {
+	  e.preventDefault()
+	  $(this).tab('show')
+	})
     
 /*
 	$(document).on('click', '.header', function () {

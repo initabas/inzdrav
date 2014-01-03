@@ -11,26 +11,30 @@
 	<p><%= forma_vypuska.name %></p>
 <% end %>
 <div class="row">
-  <div id="show-tabs" class="small-8 columns"> 
-    <div class="section-container tabs" data-section="tabs">
-      <section class="active">
-        <p class="title" data-section-title><a href="#panel1">Описание</a></p>
-        <div class="content" data-section-content>
-          <%= @medication.description %>
-        </div> 
-      </section>
-      <section>
-        <p class="title" data-section-title><a href="#panel2">Способ приминения</a></p>
-        <div class="content" data-section-content>
-          <%= @medication.dosage %>
-        </div>
-      </section>
-      <section>
-        <p class="title" data-section-title><a href="#panel3">Побочные действия</a></p>
-        <div class="content" data-section-content>
-          <%= @medication.sideeffects %>
-        </div>
-      </section>
+  <div id="show-tabs" class="col-md-8">
+  	<ul id="medication-tabs" class="nav nav-tabs">
+  	  <li class="active">
+  	    <a href="#panel1" data-toggle="tab">Описание</a>
+  	  </li>
+  	  <li>
+  	    <a href="#panel2" data-toggle="tab">Способ приминения</a>
+  	  </li>
+  	  <li>
+  	    <a href="#panel3" data-toggle="tab">Побочные действия</a>
+  	  </li>
+  	  <li>
+  	</ul>
+    <div class="tab-content">
+      <div id="panel1" class="tab-pane active">
+        <%= @medication.description %>
+      </div>         
+      <div id="panel2" class="tab-pane">
+        <%= @medication.dosage %>
+      </div>        
+      <div id="panel3" class="tab-pane">
+        <%= @medication.sideeffects %>
+      </div>
+
 	</div>
   </div>
 

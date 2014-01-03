@@ -4,7 +4,7 @@ Inzdrav::Application.routes.draw do
   resources :forma_vypuskas
   get 'search' => 'search#search', :as => 'search'
   resources :comments, :defaults => { :commentable => 'user' }
-
+  get "medication/show_model" => 'medication#show_model', :as => :show_model
   resources :helpfuls do 	
     	resources :comments, :defaults => { :commentable => 'helpful' }
   end	

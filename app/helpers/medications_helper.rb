@@ -4,21 +4,21 @@ module MedicationsHelper
     if user_signed_in?     
       if user.flagged?(model, flag)
         # ln = link_to 'Помогло!', edit_helpful_path
-        cl="btn" 
+        cl="btn-default" 
         if flag==:helpful
-          cl= mdl + "button-selected"
+          cl= mdl + "btn-success"
         elsif flag==:nonhelpful
-          cl=mdl + "button-selected"
+          cl=mdl + "btn-success"
         elsif flag==:callendar  
-          cl=mdl + "button-selected"                   
+          cl=mdl + "btn-success"                   
         end
       else
         # ln = link_to 'Помогло', new_helpful_path
-        cl=mdl + "btn"
+        cl=mdl + "btn-default"
       end
     else
       # ln = link_to 'Помогло', new_helpful_path
-      cl=mdl + "btn"      
+      cl=mdl + "btn-default"      
     end    
   end
   

@@ -9,11 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
- *= require general_foundicons
- *= require social_foundicons
  *= require scaffolds
  *= require comments
+ *= require bootstrap
+ *= require bootstrap_overrides
  */
 
 

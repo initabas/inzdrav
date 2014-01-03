@@ -1,6 +1,0 @@
-  <ul class="button-group round help_buttons">
-  <% selected = murkup_flagged(medication, current_user, :helpful) %>  
-    <li><%= content_tag :a, raw("<i class=\"foundicon-s-thumb-up secondary button " + selected + "\"></i>"), :href => '#', :title => 'Помогло', :data => {:reveal_id => 'helpfuls-' + medication.id.to_s } %></li>
-    <li><%= content_tag :a, raw("<i class=\"foundicon-s-thumb-down secondary button\"></i>"), :href => '#', :title => 'Помогло' %></li>
-    <li><%= content_tag :a, raw("<i class=\"foundicon-g-calendar secondary button\"></i>"), :href => '#', :title => 'Помогло' %></li>
-  </ul>

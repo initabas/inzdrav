@@ -5,57 +5,65 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <!-- <script src="vendor/custom.modernizr.js"></script> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-  <div id="sign-in" class="reveal-modal small" data-reveal>
-    <%= render :partial => 'users/login' %>
-    <a class="close-reveal-modal">&#215;</a>
+  <div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <%= render :partial => 'users/login'%>
+      </div>
+    </div>
   </div>
-  
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><%= link_to image_tag("logo.png"), medications_path %></a></h1>
-      </li>
-      <li class="toggle-topbar menu-icon"><a href="#"><span>Меню</span></a></li>
-    </ul>
-    <section class="top-bar-section">
-      <ul class="left">
-        <li><%= link_to 'Препараты', medications_path %></li>
-      </ul> 
-      <ul class="right">
-              <li class="divider hide-for-small"></li>
-	      <li class="has-form"> 
-	      	<%= form_tag search_path, :method => :get do %>  
-	          <div class="row collapse" >
-	            <div class="small-8 columns"> 
-	              <%= text_field_tag :search, params[:search] %>  
-	            </div>
-	            <div class="small-4 columns">
-	              <%= submit_tag "Поиск", :name => nil, :class => "button small"%>
-	            </div>
-	         </div>   
-	        <% end %> 
-	      </li>
-        <li class="divider hide-for-small"></li>
-        <% if user_signed_in? %>
-          <li><%= link_to current_user.name, user_path(current_user.id) %>
-
-          </li>
-          <li class="divider hide-for-small"></li>
-          <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
-          <li class="divider hide-for-small"></li>
-        <% else %>
-          <li><a href="#" data-reveal-id="sign-in">Войти</a></li>
-          <li class="divider hide-for-small"></li>
-          <li><%= link_to 'Регистрация', new_user_registration_path %></li>  
-        <% end %>
-      </ul>
-    </section>
-  </nav>
-
+  <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+    <div class="container">
+		  <nav class="navbar" role="navigation">
+		    <div class="navbar-header">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		      <span class="sr-only">Toggle navigation</span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		    </button>
+		    <%= link_to image_tag("logo.png"), medications_path, :class => "navbar-brand" %></a>
+		  </div>
+		
+		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li><%= link_to 'Препараты', medications_path %></li>
+		      </ul> 
+		      <form class="navbar-form navbar-left" role="search">
+		        <%= form_tag search_path, :method => :get do %> 
+		        <div class="form-group">
+		          <%= text_field_tag :search, params[:search], :class => "form-control" %>  
+		        </div>
+		        <%= submit_tag "Поиск", :name => nil, :class => "btn btn-default"%>
+		        <% end %> 
+		      </form>
+		      <ul class="nav navbar-nav navbar-right">
+		
+		        <% if user_signed_in? %>
+		          <li><%= link_to current_user.name, user_path(current_user.id) %>
+		
+		          </li>
+		          <li class="divider hide-for-small"></li>
+		          <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+		          <li class="divider hide-for-small"></li>
+		        <% else %>
+		          <li><a href="#" data-reveal-id="sign-in">Войти</a></li>
+		          <li class="divider hide-for-small"></li>
+		          <li><%= link_to 'Регистрация', new_user_registration_path %></li>  
+		        <% end %>
+		      </ul>
+		    </div>
+		    
+		  </nav>
+		</div> 
+  </header>
   <%= flash[:msg] %>
 <div class="row">
   <div class="small-12 columns">

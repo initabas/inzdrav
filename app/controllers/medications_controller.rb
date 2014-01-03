@@ -19,6 +19,13 @@ class MedicationsController < ApplicationController
     redirect_to medications_path
   end
   
+  def show_modal
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
   def index
     @search = Medication.search do
 	    keywords params[:q]     

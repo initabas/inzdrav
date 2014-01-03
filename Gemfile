@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '~> 4.0.1'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'
@@ -55,8 +55,8 @@ gem 'rolify', '~> 3.3.0.rc5', :git => 'git://github.com/EppO/rolify.git'
 gem 'rails_admin'
 
 # Zurb Foundation
-gem 'compass-rails' # you need this or you get an err
-gem 'foundation-rails'
+# gem 'compass-rails' # you need this or you get an err
+# gem 'foundation-rails'
 gem 'make_flaggable', :git=>'git://github.com/cavneb/make_flaggable.git'
 gem 'ancestry'
 gem 'russian'
