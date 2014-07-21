@@ -20,6 +20,9 @@ class MedicationsController < ApplicationController
   end
   
   def show_modal
+    @current_user = current_user
+    @medication = Medication.find(params[:id])
+    @flag = params[:flag]
     respond_to do |format|
       format.html
       format.js

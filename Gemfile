@@ -51,7 +51,8 @@ gem 'paperclip'
 
 gem 'devise'
 gem 'cancan'
-gem 'rolify', '~> 3.3.0.rc5', :git => 'git://github.com/EppO/rolify.git'
+#gem 'rolify', '~> 3.3.0.rc5', :git => 'git://github.com/EppO/rolify.git'
+gem 'rolify'
 gem 'rails_admin'
 
 # Zurb Foundation

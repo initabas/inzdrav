@@ -8,6 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
+	<div class="modal fade" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<% unless user_signed_in? %>
+	    <%= render 'users/show_modal_login' %>
+	  <% end %>s	
+	</div>
+  
+<!--
   <div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -19,6 +26,8 @@
       </div>
     </div>
   </div>
+-->
+  
   <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
     <div class="container">
 		  <nav class="navbar" role="navigation">
@@ -47,16 +56,16 @@
 		      <ul class="nav navbar-nav navbar-right">
 		
 		        <% if user_signed_in? %>
-		          <li><%= link_to current_user.name, user_path(current_user.id) %>
+		          <li><%= link_to raw("<span class='glyphicon glyphicon-user'></span>"), user_path(current_user.id), :class => "navbar-tooltip", :data => {:toggle => "tooltip", :original_title => current_user.name, :placement => "bottom"} %>
 		
 		          </li>
 		          <li class="divider hide-for-small"></li>
-		          <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+		          <li><%= link_to raw("<span class='glyphicon glyphicon-log-out'></span>"), destroy_user_session_path, :data => {:toggle => "tooltip", :original_title => "Выход", :placement => "bottom"}, :method => :delete, :class => "navbar-tooltip" %></li>
 		          <li class="divider hide-for-small"></li>
 		        <% else %>
-		          <li><a href="#" data-reveal-id="sign-in">Войти</a></li>
+		          <li><%= link_to raw("<span class='glyphicon glyphicon-log-in'></span>"), show_modal_login_path, :data => {:toggle => "tooltip", :original_title => "Войти", :placement => "bottom", :remote => true, :toggle =>  "modal", :target => '#modal-window'}, :class => "navbar-tooltip" %></li>
 		          <li class="divider hide-for-small"></li>
-		          <li><%= link_to 'Регистрация', new_user_registration_path %></li>  
+		          <li><%= link_to raw("<span class='glyphicon glyphicon-plus-sign'></span>"), new_user_registration_path, :data => {:toggle => "tooltip", :original_title => "Регистрация", :placement => "bottom"}, :class => "navbar-tooltip" %></li>  
 		        <% end %>
 		      </ul>
 		    </div>
@@ -65,6 +74,7 @@
 		</div> 
   </header>
   <%= flash[:msg] %>
+
 <div class="row">
   <div class="small-12 columns">
 	  <%= breadcrumbs semantic: true, style: :ul %> 

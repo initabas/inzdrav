@@ -47,7 +47,7 @@ class HelpfulsController < ApplicationController
       if @helpful.update(helpful_params)
         format.html { redirect_to [@helpfulness, @helpful], notice: 'Helpful was successfully updated.' }
         format.json { head :no_content }
-        format.js   { }
+     #    format.js   { }
       else
         format.html { render action: 'edit' }
         format.json { render json: @helpful.errors, status: :unprocessable_entity }

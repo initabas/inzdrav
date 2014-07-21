@@ -23,7 +23,7 @@ module MedicationsHelper
   end
   
   def modal_form(model, flag)
-    if user_signed_in?
+    if user_signed_in? && flag != :sign_in
       if current_user.flagged?(model, flag)
         render  :partial => 'helpfuls/edit',
                 :locals =>{:model => model,
@@ -32,7 +32,7 @@ module MedicationsHelper
         render :partial => 'helpfuls/new', :locals => {:model => model, :helpful => Helpful.new}
       end
     else
-      "users/sign-in"
+      render :partial => 'users/login'
     end
   end
   

@@ -1,11 +1,6 @@
 <% breadcrumb :medication, @medication %>
 
 <p id="notice"><%= notice %></p>
-<div id="helpfuls-<%= @medication.id.to_s %>" class="reveal-modal medium">
-  <%= modal_form(@medication, :helpful) %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
 <p><strong><%= @medication.name %></strong></p>
 <% @medication.forma_vypuskas.each do |forma_vypuska| %>
 	<p><%= forma_vypuska.name %></p>

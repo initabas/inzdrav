@@ -1,0 +1,8 @@
+<div class="modal-dialog">
+  <div class="modal-content col-md-10">
+    <%= modal_form(medication, flag.parameterize.underscore.to_sym) %>
+    <div class="modal-footer">
+    	<%= link_to "Отмена", "#", :data => {:dismiss => "modal"}, :class => "btn btn-default" %>
+    </div>     
+  </div>
+</div>
